@@ -2,5 +2,5 @@
 
 (def default-db
   {:name "re-frame to-do app"
-   :to-do {:first "clean car"
-           :second "Contemplate life"}})
+   :to-do ["clean car"
+           "Contemplate life"]})

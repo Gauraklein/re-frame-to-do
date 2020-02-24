@@ -6,7 +6,7 @@
 (defn to-do-view []
   (let [to-do (re-frame/subscribe [::subs/to-do])]
     [:div
-     [:p (map val @to-do)]]))
+     [:p (map str @to-do)]]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
