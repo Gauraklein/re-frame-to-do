@@ -6,10 +6,12 @@
 (defn to-do-view []
   (let [to-do (re-frame/subscribe [::subs/to-do])]
     [:div
-     [:p (get @to-do :first)]]))
+     [:p (map val @to-do)]]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
     [:div
-     [:h1 "Hello from " @name]
+     [:h1 @name]
+     [:input]
+     [:button "add to-do"]
      (to-do-view)]))
