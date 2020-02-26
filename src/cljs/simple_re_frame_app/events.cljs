@@ -17,5 +17,4 @@
 (re-frame/reg-event-db
   ::delete-to-do
   (fn [db [_ task-to-delete]]
-    (js/console.log task-to-delete)
     (update-in db [:to-do] dissoc task-to-delete)))
