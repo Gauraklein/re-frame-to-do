@@ -2,19 +2,26 @@
   (:require
    [re-frame.core :as re-frame]
    [simple-re-frame-app.subs :as subs]
-   [simple-re-frame-app.events :as events]))
+   [simple-re-frame-app.events :as events]
+   [clojure.string :as str]
+   [simple-re-frame-app.util :as util]))
+
+()
+
+(defn render-to-do [to-do]
+  [:li {:key to-do}(str to-do)
+   ; [:button {}
+   ;   "edit"]
+   [:button {:id (str "complete-" (util/replace-white-space to-do))}
+     "complete"]
+   [:button {:id (str "delete-" (util/replace-white-space to-do))}
+     "delete"]])
+
 
 (defn to-do-view []
   (let [to-do (re-frame/subscribe [::subs/to-do])]
     [:div
-     [:p (map str @to-do)]]))
-
-(defn by-id [id]
-  (js/document.getElementById id))
-
-(defn get-value [id]
-  (.-value (by-id id)))
-
+     [:ul (map render-to-do @to-do)]]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
@@ -24,6 +31,7 @@
      [:button
       {:on-click (fn [e]
                    (.preventDefault e)
-                   (re-frame/dispatch [::events/add-to-do (get-value "new-to-do")]))}
+                   (re-frame/dispatch [::events/add-to-do (util/get-value "new-to-do")]))}
+
       "add to-do"]
      (to-do-view)]))
