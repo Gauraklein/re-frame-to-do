@@ -10,7 +10,10 @@
   [:li {:key to-do} (str (val to-do))
       ; [:button {}
       ;   "edit"]
-  [:button {:id (str "complete-" (util/replace-white-space (val to-do)))}
+  [:button {:id (str "complete-" (util/replace-white-space (val to-do)))
+            :on-click (fn [e]
+                        (.preventDefault e)
+                        (re-frame/dispatch [::events/complete-to-do (val to-do)]))}
         "complete"]
   [:button {:id (str "delete-" (util/replace-white-space (val to-do)))
                 :on-click (fn [e]

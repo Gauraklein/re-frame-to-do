@@ -18,3 +18,8 @@
   ::delete-to-do
   (fn [db [_ task-to-delete]]
     (update-in db [:to-do] dissoc task-to-delete)))
+
+(re-frame/reg-event-db
+  ::complete-to-do
+  (fn [db [_ completed-to-do]]
+    (update-in db [:completed] assoc (keyword completed-to-do) completed-to-do)))
