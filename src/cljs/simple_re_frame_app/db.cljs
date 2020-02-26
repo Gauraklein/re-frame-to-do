@@ -3,4 +3,5 @@
 (def default-db
   {:name "re-frame to-do app"
    :to-do {:clean-car "clean car"
-           :pay-bills "pay bills"}})
+           :pay-bills "pay bills"}
+   :completed {:practice-re-frame "practice re-frame"}})

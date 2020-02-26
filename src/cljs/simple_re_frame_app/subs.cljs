@@ -11,3 +11,8 @@
   ::to-do
   (fn [db]
     (:to-do db)))
+
+(re-frame/reg-sub
+  ::completed
+  (fn [db]
+    (:completed db)))

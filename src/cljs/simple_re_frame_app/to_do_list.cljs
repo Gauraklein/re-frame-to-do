@@ -7,7 +7,7 @@
    [simple-re-frame-app.util :as util]))
 
 (defn render-to-do [to-do]
-  [:li {:key to-do}(str (val to-do))
+  [:li {:key to-do} (str (val to-do))
       ; [:button {}
       ;   "edit"]
   [:button {:id (str "complete-" (util/replace-white-space (val to-do)))}
