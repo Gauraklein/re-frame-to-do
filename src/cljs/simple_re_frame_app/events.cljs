@@ -12,7 +12,7 @@
 (re-frame/reg-event-db
   ::add-to-do
   (fn [db [_ new-task]]
-    (update-in db [:to-do] conj new-task)))
+    (update-in db [:to-do] assoc (keyword new-task) new-task)))
 
 (re-frame/reg-event-db
   ::delete-to-do
