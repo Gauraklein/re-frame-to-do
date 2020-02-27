@@ -10,3 +10,6 @@
 
 (defn replace-white-space [string]
   (str/replace string #" " "-"))
+
+(defn get-val [parent key]
+  (get-in (val parent) [key]))

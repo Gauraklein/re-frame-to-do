@@ -7,14 +7,15 @@
    [clojure.string :as str]
    [simple-re-frame-app.util :as util]))
 
-(defn render-completed [completed-task]
-  [:li {:key completed-task} (str (val completed-task))])
+(defn render-completed [to-do]
+  (if (util/get-val to-do :completed?)
+    [:li {:key to-do} (util/get-val to-do :task)]))
 
 
 (defn completed-list []
-  (let [completed (re-frame/subscribe [::subs/completed])]
+  (let [to-do (re-frame/subscribe [::subs/to-do])]
     [:div
-      [:ul (map render-completed @completed)]]))
+      [:ul (map render-completed @to-do)]]))
 
 
 
@@ -32,5 +33,5 @@
       "add to-do"]
      (to-do-list)
      [:hr]
-     [:h1 "Completed"]]))
-     ; (completed-list)]))
+     [:h1 "Completed"]
+     (completed-list)]))
