@@ -11,15 +11,14 @@
     [:li {:key (key to-do)} (util/get-val to-do :task)
         ; [:button {}
         ;   "edit"]
-     [:button {:id (str "complete-" (util/replace-white-space (util/get-val to-do :task)))
-               :on-click (fn [e]
-                           (.preventDefault e)
-                           (re-frame/dispatch [::events/complete-to-do (str (key to-do))]))}
+     [:button {:on-click (fn [e]
+                          (.preventDefault e)
+                          (re-frame/dispatch [::events/complete-to-do (key to-do)]))}
            "complete"]
      [:button {:id (str "delete-" (util/replace-white-space (util/get-val to-do :task)))
                    :on-click (fn [e]
                                (.preventDefault e)
-                               (re-frame/dispatch [::events/delete-to-do (str (key to-do))]))}
+                               (re-frame/dispatch [::events/delete-to-do (key to-do)]))}
            "delete"]]))
 
 

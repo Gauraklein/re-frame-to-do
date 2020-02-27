@@ -13,8 +13,9 @@
 (re-frame/reg-event-db
   ::add-to-do
   (fn [db [_ new-task]]
-    (update-in db [:to-do] assoc (keyword (util/replace-white-space new-task)) {:task new-task
-                                                                                :completed? false})))
+    (update-in db [:to-do] assoc (keyword (util/replace-white-space new-task))
+                                 {:task new-task
+                                  :completed? false})))
 
 (re-frame/reg-event-db
   ::delete-to-do
@@ -24,4 +25,4 @@
 (re-frame/reg-event-db
   ::complete-to-do
   (fn [db [_ completed-to-do]]
-    (update-in db [:completed] assoc (keyword completed-to-do) completed-to-do)))
+    (update-in db [:to-do completed-to-do] assoc :completed? true)))

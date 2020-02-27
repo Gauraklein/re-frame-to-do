@@ -14,6 +14,7 @@
 
 (defn completed-list []
   (let [to-do (re-frame/subscribe [::subs/to-do])]
+    (js/console.log to-do)
     [:div
       [:ul (map render-completed @to-do)]]))
 
