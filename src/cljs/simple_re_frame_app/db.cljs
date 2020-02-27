@@ -1,5 +1,6 @@
 (ns simple-re-frame-app.db)
 
+; Initial state
 (def default-db
   {:name "re-frame to-do app"
    :to-do {:clean-car {:task "clean car"

@@ -1,7 +1,8 @@
 # simple-re-frame-app
 
-A [re-frame](https://github.com/day8/re-frame) application designed to ... well, that part is up to
-you.
+A [re-frame](https://github.com/day8/re-frame) application created to start learning the re-frame workflow
+
+run with ```lein dev``` in terminal
 
 ## Getting Started
 
