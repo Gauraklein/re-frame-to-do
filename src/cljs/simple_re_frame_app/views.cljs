@@ -32,5 +32,5 @@
       "add to-do"]
      (to-do-list)
      [:hr]
-     [:h1 "Completed"]
-     (completed-list)]))
+     [:h1 "Completed"]]))
+     ; (completed-list)]))
