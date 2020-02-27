@@ -1,6 +1,7 @@
 (ns simple-re-frame-app.events
   (:require
    [re-frame.core :as re-frame]
+   [simple-re-frame-app.util :as util]
    [simple-re-frame-app.db :as db]))
 
 
@@ -12,7 +13,8 @@
 (re-frame/reg-event-db
   ::add-to-do
   (fn [db [_ new-task]]
-    (update-in db [:to-do] assoc (keyword new-task) new-task)))
+    (update-in db [:to-do] assoc (keyword (util/replace-white-space new-task)) {:task new-task
+                                                                                :completed? false})))
 
 (re-frame/reg-event-db
   ::delete-to-do
